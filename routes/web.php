@@ -11,6 +11,8 @@
 |
 */
 
+use Illuminate\Http\Request;
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -50,4 +52,45 @@ Route::prefix('/app')->group(function(){
         return view('profile');
     })->name('app.profile');
 
+});
+
+Route::prefix('/produtos')->group(function(){
+    echo "<h1>Produtos</h1>";
+    echo "<ol>";
+    echo "<li>Notebooks </li>";
+    echo "<li>Impressora </li>";
+    echo "<li>Mouse </li>";
+    echo "</ol>";
+})->name('meusprodutos');
+
+Rourte::redirect('todosprodutos1', 'produtos', 301);
+
+Route::get('todosprodutos2', function(){
+    return redirect()->route('meusprodutos');
+});
+
+///////////////////////////////////////////
+
+Route::post('/requisicoes', function(Request $request){
+    return 'Hello POST';
+});
+
+Route::delete('/requisicoes', function(Request $request){
+    return 'Hello DELETE';
+});
+
+Route::put('/requisicoes', function(Request $request){
+    return 'Hello PUT';
+});
+
+Route::patch('/requisicoes', function(Request $request){
+    return 'Hello PATCH';
+});
+
+Route::options('/requisicoes', function(Request $request){
+    return 'Hello OPTIONS';
+});
+
+Route::get('/requisicoes', function(Request $request){
+    return 'Hello GET';
 });
