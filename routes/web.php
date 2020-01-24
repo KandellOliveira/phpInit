@@ -51,3 +51,18 @@ Route::prefix('/app')->group(function(){
     })->name('app.profile');
 
 });
+
+Route::prefix('/produtos')->group(function(){
+    echo "<h1>Produtos</h1>";
+    echo "<ol>";
+    echo "<li>Notebooks </li>";
+    echo "<li>Impressora </li>";
+    echo "<li>Mouse </li>";
+    echo "</ol>";
+})->name('meusprodutos');
+
+Rourte::redirect('todosprodutos1', 'produtos', 301);
+
+Route::get('todosprodutos2', function(){
+    return redirect()->route('meusprodutos');
+});
