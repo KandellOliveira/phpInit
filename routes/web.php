@@ -54,7 +54,7 @@ Route::prefix('/app')->group(function(){
 
 });
 
-Route::prefix('/produtos')->group(function(){
+Route::get('/produtos', function(){
     echo "<h1>Produtos</h1>";
     echo "<ol>";
     echo "<li>Notebooks </li>";
@@ -63,7 +63,7 @@ Route::prefix('/produtos')->group(function(){
     echo "</ol>";
 })->name('meusprodutos');
 
-Rourte::redirect('todosprodutos1', 'produtos', 301);
+Route::redirect('todosprodutos1', 'produtos', 301);
 
 Route::get('todosprodutos2', function(){
     return redirect()->route('meusprodutos');
@@ -94,3 +94,6 @@ Route::options('/requisicoes', function(Request $request){
 Route::get('/requisicoes', function(Request $request){
     return 'Hello GET';
 });
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
